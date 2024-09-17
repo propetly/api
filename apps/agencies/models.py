@@ -16,5 +16,7 @@ class Agency(models.Model):
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
 
+    owner = models.ForeignKey("users.User", on_delete=models.SET_NULL, null=True, blank=True, related_name="owned_agencies")
+
     def __str__(self):
         return self.name
